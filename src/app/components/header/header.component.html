@@ -1,0 +1,14 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <span (click)="back()" style="cursor: pointer">My App</span>
+    <span class="example-spacer"></span>
+    <button mat-icon-button [matMenuTriggerFor]="appMenu">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <mat-menu #appMenu="matMenu">
+      <button mat-menu-item (click)="sources()"><mat-icon>rss_feed</mat-icon> Sources</button>
+      <button mat-menu-item><mat-icon>settings</mat-icon> Settings</button>
+    </mat-menu>
+  </mat-toolbar-row>
+</mat-toolbar>
+

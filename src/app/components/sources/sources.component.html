@@ -1,0 +1,18 @@
+<mat-card-content>
+  <mat-card class="list-nav">
+    <mat-form-field appearance="fill">
+      <mat-label>Input</mat-label>
+      <input matInput [(ngModel)]="term">
+    </mat-form-field>
+    <mat-card-content class="list-item" *ngFor="let source of mSources | search:term" (click)="selectSource(source.id)">
+
+      <img mat-card-avatar [ngStyle]="{'background-image': 'url(../../../assets/images/'+ source.id +'.png)'}"
+           class="example-header-image">
+
+      <span class="source-name">{{source.name}}</span>
+      <!--      <button class="btn btn-primary" (click)=""></button>-->
+
+    </mat-card-content>
+  </mat-card>
+</mat-card-content>
+
