@@ -1,0 +1,27 @@
+<form class="example-form" (ngSubmit)="onSubmit(f)" #f="ngForm">
+  <mat-form-field class="example-full-width">
+    <mat-label>Leave a comment</mat-label>
+    <textarea matInput placeholder="Comment..."
+           type="text"
+           name="name"
+           id="id"
+              ngModel></textarea>
+  </mat-form-field>
+  <button mat-button color="primary" class="add" type="submit" >Add Comment</button>
+  <div>
+    <ul class="comments-list" >
+      <li style="border-bottom: 1px black solid; margin-bottom: 50px" *ngFor="let comment of getFilteredComments(articleId);let i = index">
+        <div>
+          {{comment.content}}
+        </div>
+        <br>
+    </ul>
+  </div>
+<!--  <mat-card *ngFor="let comment of comments">{{comment.name}}</mat-card>-->
+</form>
+
+
+
+
+
+

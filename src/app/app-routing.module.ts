@@ -3,6 +3,7 @@ import {RouterModule, Routes} from '@angular/router';
 
 import {SourcesComponent} from './components/sources/sources.component';
 import {FeedComponent} from './components/feed/feed.component';
+import {AuthenticationComponent} from './components/authentication/authentication.component';
 
 const routes: Routes = [
   {
@@ -18,6 +19,10 @@ const routes: Routes = [
     path: 'feed/:id',
     component:FeedComponent
   },
+  {
+    path:'auth',
+    component:AuthenticationComponent
+  }
 ];
 
 @NgModule({

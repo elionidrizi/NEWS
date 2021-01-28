@@ -6,8 +6,8 @@
       <mat-icon>menu</mat-icon>
     </button>
     <mat-menu #appMenu="matMenu">
-      <button mat-menu-item (click)="sources()"><mat-icon>rss_feed</mat-icon> Sources</button>
-      <button mat-menu-item><mat-icon>settings</mat-icon> Settings</button>
+      <button mat-menu-item (click)="onSources()"><mat-icon>rss_feed</mat-icon> Sources</button>
+      <button mat-menu-item (click)="onAuth()"><mat-icon>account_box</mat-icon>Authentication</button>
     </mat-menu>
   </mat-toolbar-row>
 </mat-toolbar>

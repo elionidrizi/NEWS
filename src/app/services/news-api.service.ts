@@ -31,5 +31,9 @@ export class NewsApiService {
     this.sourceSelectedSubject.next(sourceId);
   }
 
+  addCommentToArticle(comment: Comment, articleId) {
+
+  }
+
 
 }

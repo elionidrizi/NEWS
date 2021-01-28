@@ -8,9 +8,11 @@ import {AppRoutingModule} from './app-routing.module';
 import {ServicesModule} from './modules/services.module';
 import {FeedComponent} from './components/feed/feed.component';
 import { SearchPipe } from './shared/search.pipe';
-import { LikesComponent } from './components/feed/likes/likes.component';
-import { DislikesComponent } from './components/feed/dislikes/dislikes.component';
-import { CommentsComponent } from './components/feed/comments/comments.component';
+import { LikesComponent } from './components/feed/article/likes/likes.component';
+import { DislikesComponent } from './components/feed/article/dislikes/dislikes.component';
+import { CommentsComponent } from './components/feed/article/comments/comments.component';
+import { ArticleComponent } from './components/feed/article/article.component';
+import { AuthenticationComponent } from './components/authentication/authentication.component';
 
 
 @NgModule({
@@ -20,6 +22,8 @@ import { CommentsComponent } from './components/feed/comments/comments.component
         LikesComponent,
         DislikesComponent,
         CommentsComponent,
+        ArticleComponent,
+        AuthenticationComponent,
     ],
     imports: [
         BrowserModule,

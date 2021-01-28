@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Article} from '../../interface/article.model';
 import {NewsApiService} from '../../services/news-api.service';
-import {ActivatedRoute, ActivatedRouteSnapshot, Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-feed',
@@ -12,7 +12,8 @@ export class FeedComponent implements OnInit {
   mArticles: Array<Article>;
   sourceSelected: string;
 
-  constructor(private newsApi: NewsApiService, private activatedRoute: ActivatedRoute,private route:Router) {
+
+  constructor(private newsApi: NewsApiService, private activatedRoute: ActivatedRoute, private route: Router) {
     this.mArticles = [];
   }
 
@@ -24,9 +25,5 @@ export class FeedComponent implements OnInit {
         this.mArticles = data.articles;
       }
     );
-  }
-
-  onReturn() {
-    this.route.navigate(['sources']);
   }
 }

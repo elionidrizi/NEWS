@@ -13,11 +13,15 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  sources() {
+  onSources() {
     this.router.navigate(['sources']);
   }
 
   back() {
     this.router.navigate(['']);
+  }
+
+  onAuth() {
+    this.router.navigate(['auth']);
   }
 }
