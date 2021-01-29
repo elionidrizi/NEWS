@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {ArticleComment} from '../../../../interface/comments.model';
 import {Subject} from 'rxjs';
+import {DataStorageService} from '../../../../services/data-storage.service';
 
 @Injectable({
   providedIn: 'root'
@@ -22,8 +23,11 @@ export class CommentsService {
     this.refresh();
   }
 
+  // getComments() {
+  //   return this.refresh();
+  // }
   getComments() {
-    return this.refresh();
+    return this.comments.slice();
   }
 
 

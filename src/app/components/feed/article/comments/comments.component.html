@@ -8,17 +8,18 @@
               ngModel></textarea>
   </mat-form-field>
   <button mat-button color="primary" class="add" type="submit" >Add Comment</button>
-  <div>
-    <ul class="comments-list" >
-      <li style="border-bottom: 1px black solid; margin-bottom: 50px" *ngFor="let comment of getFilteredComments(articleId);let i = index">
-        <div>
-          {{comment.content}}
-        </div>
-        <br>
-    </ul>
-  </div>
+
 <!--  <mat-card *ngFor="let comment of comments">{{comment.name}}</mat-card>-->
 </form>
+<div>
+  <ul class="comments-list mt-3" >
+    <li style="border-bottom: 1px grey dotted; margin-bottom: 50px;margin-top: 20px;list-style-type: none" *ngFor="let comment of getFilteredComments(articleId);let i = index">
+
+      {{comment.content}}
+      <button mat-button color="primary" (click)="onStore()">Store comment</button>
+      <br>
+  </ul>
+</div>
 
 
 

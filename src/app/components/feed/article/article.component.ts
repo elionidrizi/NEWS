@@ -13,22 +13,24 @@ export class ArticleComponent implements OnInit {
   @Input() id: number;
 
   constructor() {
+    this.selectedIndexes = [];
   }
 
   ngOnInit(): void {
   }
 
-  // toggleComments(i: number) {
-  //   if (this.selectedIndexes.find(s => s == i) == null) {
-  //     this.selectedIndexes.push(i);
-  //   } else {
-  //     this.selectedIndexes = this.selectedIndexes.filter(s => s != i);
-  //   }
-  // }
-  //
-  // isSelected(i: number) {
-  //   let item = this.selectedIndexes.find(s => s == i);
-  //   return (item != null);
-  // }
+  toggleComments(i: number) {
+    if (this.selectedIndexes.find(s => s == i) == null) {
+      this.selectedIndexes.push(i);
+    } else {
+      this.selectedIndexes = this.selectedIndexes.filter(s => s != i);
+    }
+  }
+
+  isSelected(i: number) {
+    let item = this.selectedIndexes.find(s => s == i);
+    return (item != null);
+  }
+
 
 }

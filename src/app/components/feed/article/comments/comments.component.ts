@@ -3,13 +3,14 @@ import {ArticleComment} from '../../../../interface/comments.model';
 import {NgForm} from '@angular/forms';
 import {CommentsService} from './comments.service';
 import {Subscription} from 'rxjs';
+import {DataStorageService} from '../../../../services/data-storage.service';
 
 @Component({
   selector: 'app-comments',
   templateUrl: './comments.component.html',
   styleUrls: ['./comments.component.css']
 })
-export class CommentsComponent implements OnInit, OnDestroy {
+export class CommentsComponent implements OnInit {
   comments: ArticleComment[];
   @ViewChild('f', {static: false}) slform: NgForm;
   @Input() articleId: number;
@@ -17,7 +18,7 @@ export class CommentsComponent implements OnInit, OnDestroy {
   i: number;
   selectedIndexes: number[];
 
-  constructor(private commentsService: CommentsService) {
+  constructor(private commentsService: CommentsService,private dataStorage : DataStorageService) {
     this.selectedIndexes = [];
   }
 
@@ -39,6 +40,8 @@ export class CommentsComponent implements OnInit, OnDestroy {
        this.comments =data;
      }
    )
+    this.dataStorage.storeComment();
+
     // this.commentsService.addComment()
     // if (this.selectedIndexes.find(s => s == i) == null) {
     //   this.commentsService.addComment(newComment);
@@ -49,9 +52,9 @@ export class CommentsComponent implements OnInit, OnDestroy {
 
   }
 
-  ngOnDestroy() {
-    this.isChangedSub.unsubscribe();
-  }
+  // ngOnDestroy() {
+  //   this.isChangedSub.unsubscribe();
+  // }
 
   onAdd(i: number) {
 
@@ -65,5 +68,9 @@ export class CommentsComponent implements OnInit, OnDestroy {
   getFilteredComments(articleId: number) {
     return this.comments.filter(s => s.articleId == articleId);
 
+  }
+
+  onStore() {
+      this.dataStorage.storeComment();
   }
 }

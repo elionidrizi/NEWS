@@ -13,6 +13,8 @@ import { DislikesComponent } from './components/feed/article/dislikes/dislikes.c
 import { CommentsComponent } from './components/feed/article/comments/comments.component';
 import { ArticleComponent } from './components/feed/article/article.component';
 import { AuthenticationComponent } from './components/authentication/authentication.component';
+import {HTTP_INTERCEPTORS} from '@angular/common/http';
+import {AuthInterceptor} from './components/authentication/auth.interceptor';
 
 
 @NgModule({
@@ -33,7 +35,13 @@ import { AuthenticationComponent } from './components/authentication/authenticat
         ServicesModule,
 
     ],
-    providers: [],
+    providers: [
+      {
+        provide: HTTP_INTERCEPTORS,
+        useClass: AuthInterceptor,
+        multi: true
+      }
+    ],
     exports: [
     ComponentsModule
     ],

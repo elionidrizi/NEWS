@@ -3,9 +3,10 @@ import {HttpClient} from '@angular/common/http';
 import {environment} from '../../../environments/environment';
 import {BehaviorSubject} from 'rxjs';
 import {User} from '../../interface/user.model';
+import {tap} from 'rxjs/operators';
 
 export interface AuthResponseData {
-  kind:string,
+  kind: string,
   idToken: string,
   email: string,
   refreshToken: string,
@@ -30,7 +31,9 @@ export class AuthService {
         email: email,
         password: password,
         returnSecureToken: true
-      });
+      }).pipe(tap(resData => {
+      this.handleAuthentication(resData.email, resData.localId, resData.idToken, +resData.expiresIn);
+    }));
   }
 
   login(email: string, password: string) {
@@ -39,7 +42,23 @@ export class AuthService {
         email: email,
         password: password,
         returnSecureToken: true
-      });
+      }).pipe(tap(resData => {
+      this.handleAuthentication(resData.email, resData.localId, resData.idToken, +resData.expiresIn);
+    }));
+
+  }
+
+  logout() {
+    this.user.next(null);
+  }
+
+  private handleAuthentication(email: string, id: string, token: string, expiresIn: number) {
+    const user = new User(
+      email,
+      id,
+      token,
+    );
+    this.user.next(user);
 
   }
 

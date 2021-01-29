@@ -7,7 +7,8 @@
     </button>
     <mat-menu #appMenu="matMenu">
       <button mat-menu-item (click)="onSources()"><mat-icon>rss_feed</mat-icon> Sources</button>
-      <button mat-menu-item (click)="onAuth()"><mat-icon>account_box</mat-icon>Authentication</button>
+      <button mat-menu-item (click)="onAuth()" *ngIf="!isAuthenticated"><mat-icon>account_box</mat-icon>Authentication</button>
+      <button mat-menu-item (click)="onLogout()" *ngIf="isAuthenticated"><mat-icon>account_box</mat-icon>Logout</button>
     </mat-menu>
   </mat-toolbar-row>
 </mat-toolbar>
